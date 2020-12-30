@@ -1,4 +1,6 @@
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import './App.css';
+import FaceFilter from './components/FaceFilter';
 import Header from './components/Header';
 import PhotoEffects from './components/PhotoEffects';
 
@@ -6,16 +8,28 @@ function App() {
   return (
     <div className="App">
 
-      <Header/>
-      {/* Header */}
+      <Router>
+        <Switch>
 
-      <PhotoEffects/>
-      {/*photoeffects*/}
-        {/* photoeffect1 */}
-        {/* photoeffect2 */}
-        {/* photoeffect3 */}
+          <Route path = '/faceF'>
+            <FaceFilter/>
+          </Route>
 
-      {/* footer */}
+          <Route path = '/styleT'>
+
+          </Route>
+
+          <Route path = '/oldN'>
+
+          </Route>
+
+          <Route path ='/'>
+            <Header/>
+            <PhotoEffects/>
+          </Route>
+
+        </Switch>
+      </Router>
 
     </div>
   );

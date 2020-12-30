@@ -14,6 +14,7 @@ function PhotoEffects() {
                 src = {faceFilter}
                 short = 'PixAI - Face filters and so much more'
                 more = 'Transform yourself into something else.'
+                tab = 'face'
             />
 
             <PhotoEffect2    
@@ -26,6 +27,7 @@ function PhotoEffects() {
                 src = {oldColor}
                 short = 'Old to New'
                 more = 'Bring life to old black and white photos with this feature powered by AI.'
+                tab = 'old'
             />          
         </div>
     )

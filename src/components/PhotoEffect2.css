@@ -19,8 +19,10 @@
 .photoEffect2__text{
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding-left: 5vw;
     padding-right: 5vw ;    
+    text-align: center;
 }
 
 .photoEffect2__text > h3{
@@ -35,4 +37,19 @@
     font-weight: 300;
     font-size: 20px;
     letter-spacing: 2px;
+}
+
+.photoEffect2__text > button{
+    background-color: #77c9ff;
+    color: white;
+    text-transform: inherit;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    width: 80px;
+}
+
+.photoEffect2__text > button:hover{
+    color: #77c9ff;
+    background-color: white;
 }
