@@ -3,6 +3,7 @@ import './App.css';
 import FaceFilter from './components/FaceFilter';
 import Header from './components/Header';
 import PhotoEffects from './components/PhotoEffects';
+import StyleTransfer from './components/StyleTransfer';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
           </Route>
 
           <Route path = '/styleT'>
-
+            <StyleTransfer/>
           </Route>
 
           <Route path = '/oldN'>
