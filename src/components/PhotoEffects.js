@@ -24,8 +24,8 @@ function PhotoEffects() {
 
             <PhotoEffect
                 src = {oldColor}
-                short='Old to New'
-                more='Bring life to old black and white photos with this feature powered by AI'
+                short = 'Old to New'
+                more = 'Bring life to old black and white photos with this feature powered by AI.'
             />          
         </div>
     )
