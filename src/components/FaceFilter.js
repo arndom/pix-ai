@@ -9,8 +9,6 @@ function FaceFilter() {
     return (
         <div className = 'faceFilter'>
 
-
-
             <div className = 'faceFilter__content'>
 
                 <div className = 'faceFilter__contentLeft'>
@@ -67,10 +65,7 @@ function FaceFilter() {
                             </p> 
                         </div>
 
-
-
                         <Button
-                            onClick = ''
                             variant = 'outlined'>
                             Filter
                         </Button>     
