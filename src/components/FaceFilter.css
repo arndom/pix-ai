@@ -96,10 +96,10 @@
     letter-spacing: 1.5px;
 }
 
-.faceFilter__contentInputUploadButton > .MuiSvgIcon-root{
-    font-size: 35px !important;    
-    color: #663dff;
-} 
+/* .faceFilter__contentInputUploadButton > .Iconutton > {
+    font-size: 50px !important;    
+    color: #0000;
+}  */
 
 .faceFilter__contentInputUploadButtonInput{
     display: none;
@@ -118,7 +118,7 @@
     font-weight: 200;
 }
 
-.faceFilter__contentInputInfo > p > .MuiSvgIcon-root{
+.faceFilter__contentInputInfo > p >.MuiSvgIcon-root{
     margin-right: 10px !important;
     font-size: 12px !important;
     color: #ff7779;
@@ -131,7 +131,8 @@
     text-transform: inherit;
     margin-top: 20px;
     margin-bottom: 20px;
-    font-weight: 600;
+    font-weight: 500;
+    letter-spacing: 1.5px;
     width: 80px;
 }
 

@@ -1,11 +1,11 @@
-.styleTransfer{
+.oldNew{
     background-color: #F1F1F1;
     padding-top: 5vh;
     padding-bottom: 5vh;
     height: 90vh;
 }
 
-.styleTransfer__content{
+.oldNew__content{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -21,7 +21,7 @@
     box-shadow: 1px 1px 8px -1px #000;
 }
 
-.styleTransfer__contentLeft{
+.oldNew__contentLeft{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -31,7 +31,7 @@
 
 }
 
-.styleTransfer__contentLeft > a:link{
+.oldNew__contentLeft > a:link{
     text-decoration: none;
     font-family: cursive;
     font-size: 45px;
@@ -44,7 +44,7 @@
     -webkit-text-fill-color: transparent;
 }
 
-/* .styleTransfer__contentLeft > h2{
+/* .oldNew__contentLeft > h2{
     font-family: cursive;
     font-size: 45px;
     font-weight: 100;    
@@ -56,7 +56,7 @@
     -webkit-text-fill-color: transparent;
 } */
 
-.styleTransfer__contentLeft > h3{
+.oldNew__contentLeft > h3{
     font-family: cursive;
     font-size: 18px;    
     font-weight: 100;    
@@ -69,23 +69,24 @@
     -webkit-text-fill-color: transparent;
 }
 
-.styleTransfer__contentLeft > button{
+.oldNew__contentLeft > button{
     margin: 10px;   
-    background-color: #aa00ff;
+    background-color: #663dff;
     color: white;
     text-transform: inherit;
     margin-top: 20px;
     margin-bottom: 20px;
-    font-weight: 600;
+    font-weight: 500;
+    letter-spacing: 1.5px;
     width: 80px;
 }
 
-.styleTransfer__contentLeft > button:hover{
+.oldNew__contentLeft > button:hover{
     background-color: white;
-    color: #aa00ff;
+    color: #663dff;
 }
 
-.styleTransfer__Input{
+.oldNew__Input{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -95,42 +96,7 @@
 
 }
 
-.styleTransfer__InputContent{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-
-    margin:20px;
-    height: 200px;
-    width: 200px;
-    
-    border-style: dotted;
-    border-width: 5px;
-    border-color: #303030;
-    background-color: none;
-    border-radius: 5px;    
-}
-
-
-.styleTransfer__InputContent > h3{
-    font-family: cursive;
-    font-size: 18px;    
-    font-weight: 100;    
-    letter-spacing: 0.5px;
-    
-    background: rgb(58,178,255);
-    background: radial-gradient(circle, rgba(58,178,255,1) 18%, rgba(71,217,191,1) 52%, rgba(157,0,255,1) 92%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.styleTransfer__InputContentInput{
-    display: none;
-}
-
-.styleTransfer__InputStyle{
+.oldNew__InputStyle{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -147,7 +113,7 @@
     border-radius: 5px;
 }
 
-.styleTransfer__InputStyle > h3{
+.oldNew__InputStyle > h3{
     font-family: cursive;
     font-size: 18px;    
     font-weight: 100;    
@@ -160,11 +126,17 @@
     -webkit-text-fill-color: transparent;
 }
 
-.styleTransfer__InputStyleInput{
+/* .oldNew__InputStyle  > .MuiSvgIcon-root{
+    font-size: 100px !important;    
+    color: #77c9ff !important; 
+}  */
+
+.oldNew__InputStyleInput{
     display: none;
 }
 
-.styleTransfer__Output{
+
+.oldNew__Output{
     width: 55vw;
     height: 85vh;
 

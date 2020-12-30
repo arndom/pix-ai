@@ -2,6 +2,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import './App.css';
 import FaceFilter from './components/FaceFilter';
 import Header from './components/Header';
+import OldNew from './components/OldNew';
 import PhotoEffects from './components/PhotoEffects';
 import StyleTransfer from './components/StyleTransfer';
 
@@ -21,7 +22,7 @@ function App() {
           </Route>
 
           <Route path = '/oldN'>
-
+            <OldNew/>
           </Route>
 
           <Route path ='/'>
