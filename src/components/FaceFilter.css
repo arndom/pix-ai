@@ -73,6 +73,7 @@
     padding: 30px 10px;
     width: 18vw;
     height: 40vh;
+    
 
     border-style: none;
     border-width: 1px;
@@ -100,6 +101,14 @@
     font-size: 50px !important;    
     color: #0000;
 }  */
+
+.faceFilter__contentInputUploadButton > img{
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 10vw;
+    max-height: 30vh;
+}
 
 .faceFilter__contentInputUploadButtonInput{
     display: none;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './FaceFilter.css';
 // import AddCircleIcon from '@material-ui/icons/AddCircle';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -8,6 +8,9 @@ import { Link } from 'react-router-dom';
 
 
 function FaceFilter() {
+
+    const[face, setFace] = useState(null);
+
     return (
         <div className = 'faceFilter'>
 
@@ -26,45 +29,66 @@ function FaceFilter() {
 
                         <div className = 'faceFilter__contentInputUpload' >
                             <div className = 'faceFilter__contentInputUploadButton'>
+
                                 <input 
                                     accept="image/*"
                                     className='faceFilter__contentInputUploadButtonInput'
                                     id="icon-button-file"
-                                    type="file" />
-                                <label htmlFor="icon-button-file">
-                                    <IconButton color="primary" aria-label="upload picture" component="span">
-                                    <PhotoCamera />
-                                    </IconButton>
-                                </label>     
+                                    type="file"
+                                    onChange = {(e) =>
+                                        setFace(e.target.files[0])
+                                    }
+                                />
+
+                                {face && <img src = {face && URL.createObjectURL(face)} />}
+
+                                {!face &&
+                                    <label htmlFor="icon-button-file">
+                                        <IconButton
+                                            color="primary"
+                                            aria-label="upload picture"
+                                            component="span">
+                                        <PhotoCamera 
+                                        />
+                                        </IconButton>
+                                    </label>
+                                }
+
+    
+
                             </div>   
-
-                            <p>
-                                Add a photo
-                            </p>
-                        </div>
-
-                        <div className = 'faceFilter__contentInputInfo'>
                             
-                            <p>
-                                <FavoriteIcon/>
-                                Toonify
-                            </p>
+                            {!face &&
+                                <p>
+                                    Add a photo
+                                </p>
+                            }
 
-                            <p>
-                                <FavoriteIcon/>  
-                                Zombify
-                            </p>
-
-                            <p>
-                                <FavoriteIcon/>
-                                Illustration
-                            </p>
-
-                            <p>
-                                <FavoriteIcon/>
-                                Share
-                            </p> 
                         </div>
+
+                        {!face &&
+                            <div className = 'faceFilter__contentInputInfo'>       
+                                <p>
+                                    <FavoriteIcon/>
+                                    Toonify
+                                </p>
+
+                                <p>
+                                    <FavoriteIcon/>  
+                                    Zombify
+                                </p>
+
+                                <p>
+                                    <FavoriteIcon/>
+                                    Illustration
+                                </p>
+
+                                <p>
+                                    <FavoriteIcon/>
+                                    Share
+                                </p> 
+                            </div>
+                        }
 
                         <Button
                             variant = 'outlined'>

@@ -102,7 +102,7 @@
     align-items: center;
 
     margin:20px;
-    height: 200px;
+    height: 250px;
     width: 200px;
     
     border-style: dotted;
@@ -110,6 +110,14 @@
     border-color: #303030;
     background-color: none;
     border-radius: 5px;    
+}
+
+.styleTransfer__InputContent > img{
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+    max-height: 250px;
 }
 
 
@@ -137,7 +145,7 @@
     align-items: center;
 
     margin:20px;
-    height: 200px;
+    height: 250px;
     width: 200px;
 
     border-style: dotted;
@@ -145,6 +153,14 @@
     border-color: #303030;
     background-color: none;
     border-radius: 5px;
+}
+
+.styleTransfer__InputStyle > img{
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+    max-height: 250px;
 }
 
 .styleTransfer__InputStyle > h3{

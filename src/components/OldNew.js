@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './OldNew.css';
 import { Button, IconButton} from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 function OldNew() {
+
+    const[photo, setPhoto] = useState(null);
+
     return (
         <div className = 'oldNew'>
             <div className = 'oldNew__content'>
@@ -18,17 +21,32 @@ function OldNew() {
                 <div className = 'oldNew__Input'>
 
                     <div className = 'oldNew__InputStyle'>
-                        <h3>Old Photo</h3>
+
+                        {!photo &&
+                            <h3>Old Photo</h3>
+                        } 
+ 
+                        
                         <input 
                             accept="image/*"
                             className='oldNew__InputStyleInput'
                             id="icon-button-file"
-                            type="file" />
-                        <label htmlFor="icon-button-file">
-                            <IconButton color="primary" aria-label="upload picture" component="span">
-                                <PhotoCamera/>
-                            </IconButton>
-                        </label> 
+                            type="file" 
+                            onChange = {(e) => setPhoto(e.target.files[0])}
+                            />
+
+                            {photo && <img src = {photo && URL.createObjectURL(photo)}/>}
+
+
+                        {!photo &&
+                            <label htmlFor="icon-button-file">
+                                <IconButton color="primary" aria-label="upload picture" component="span">
+                                    <PhotoCamera/>
+                                </IconButton>
+                            </label> 
+                        }
+
+
                     </div>
 
                 </div>

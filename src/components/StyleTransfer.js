@@ -1,10 +1,14 @@
 import { Button } from '@material-ui/core';
-import React from 'react';
+import React, { useState } from 'react';
 import './StyleTransfer.css';
 import { Link } from 'react-router-dom';
 
 
 function StyleTransfer() {
+
+    const[content, setContent] = useState(null);
+    const[style, setStyle] = useState(null);
+
     return (
         <div className = 'styleTransfer'>
 
@@ -20,35 +24,59 @@ function StyleTransfer() {
                     <div className = 'styleTransfer__Input'>
 
                         <div className = 'styleTransfer__InputContent'>
-                            <h3>Content</h3>
+
+                            {!content &&
+                                <h3>Content</h3>
+                            }
+                            
                             <input
                                 accept="image/*"
                                 className='styleTransfer__InputContentInput'
-                                id="contained-button-file"
+                                id="contained-button-file1"
                                 multiple
                                 type="file"
+                                onChange = {(e)  => setContent(e.target.files[0])}
                             />
-                            <label htmlFor="contained-button-file">
-                                <Button variant="contained" color="primary" component="span">
-                                    Upload
-                                </Button>
-                            </label>
+
+                            {content && <img src = {content && URL.createObjectURL(content)}/>}       
+
+                            {!content &&
+                                <label htmlFor="contained-button-file1">
+                                    <Button variant="contained" color="primary" component="span">
+                                        Upload
+                                    </Button>
+                                </label>
+                            }
+                            
+
                         </div>
 
                         <div className = 'styleTransfer__InputStyle'>
-                            <h3>Style</h3>
+                            
+                            {!style && 
+                                 <h3>Style</h3>                           
+                            }
+
                             <input
                                 accept="image/*"
                                 className='styleTransfer__InputStyleInput'
-                                id="contained-button-file"
+                                id="contained-button-file2"
                                 multiple
                                 type="file"
+                                onChange = {(e)  => setStyle(e.target.files[0])}
                             />
-                            <label htmlFor="contained-button-file">
-                                <Button variant="contained" color="primary" component="span">
-                                    Upload
-                                </Button>
-                            </label>
+
+                            {style && <img src = {style && URL.createObjectURL(style)}/>} 
+
+                            {!style &&
+                                <label htmlFor="contained-button-file2">
+                                    <Button variant="contained" color="primary" component="span">
+                                        Upload
+                                    </Button>
+                                </label>
+                            }
+
+
                         </div>
 
                     </div>
