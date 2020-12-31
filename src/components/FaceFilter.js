@@ -1,15 +1,99 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './FaceFilter.css';
 // import AddCircleIcon from '@material-ui/icons/AddCircle';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { Button, IconButton } from '@material-ui/core';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import { Link } from 'react-router-dom';
-
+import {requests, TOON_API_KEY, DZOOK_API_KEY} from '../requests';
+import toon_axios from '../toon_axios';
+import dzook_axios from '../dzook_axios';
+// import { Base64 } from 'js-base64';
+// import imageToBase64  from 'image-to-base64';
+// import   from '../assets/images/old-color.jpg'       
 
 function FaceFilter() {
 
     const[face, setFace] = useState(null);
+    const[filter,  setFilter] = useState(requests.fetchZombify);
+    const[output, setOutput] = useState(null);
+    const[b, setB] = useState(null);
+
+
+    const toonData = new FormData();
+    var  dzookData = null;
+
+    async function fetchToonData(){
+        const response = await toon_axios.post(filter,
+            toonData,
+            { headers: 
+                TOON_API_KEY,
+                'Content-type': 'multipart/form-data',
+                'X-RapidAPI-Host': 'toonify.p.rapidapi.com',
+                'accept': 'image/jpeg'
+            },
+            {timeout: 0},
+            {processData: false},
+            {mimeType: "multipart/form-data"},
+            {contentType: false}
+        );
+        console.log(response);
+
+        setOutput(response.data.b64_encoded_output)
+        // console.log(photo);
+        return response;
+    }
+
+    // async function fetchDzookData(){
+    //     const response = await dzook_axios.post(requests.fetchDzook,
+    //         dzookData,
+    //         { headers: 
+    //             DZOOK_API_KEY,
+    //             "content-type": "application/json",
+    //             "x-rapidapi-host": "dzook4.p.rapidapi.com",
+    //             'Access-Control-Allow-Origin': '*',
+    //             'Access-Control-Allow-Methods': 'GET, PUT, POST,DELETE, PATCH,OPTIONS',
+    //         },
+    //         {timeout: 0},
+    //     );
+    //     console.log(response);
+
+    //     // console.log(b);
+    //     console.log(dzookData);
+    //     return response;
+    // }
+
+    // function encodeImageFileAsURL(element) {
+    //     var file = element;
+    //     var reader = new FileReader();
+    //     reader.onloadend = function() {
+    //     //   console.log(reader.result)
+    //       setB(reader.result)
+    //     }
+    //     reader.readAsDataURL(file);
+    //     // return reader.readAsDataURL(file);
+    //   }
+
+
+
+    useEffect(()=>{
+        toonData.append('image', face);
+        // if(face){
+        //     encodeImageFileAsURL(face);
+        //     dzookData =  JSON.stringify({
+        //         'image': b,
+        //         "return_aligned":false
+        //     });
+
+        //     // dzookData.image.replace('data:image/jpeg;base64,', '')
+
+        //     console.log(dzookData);
+
+
+        //     }
+
+        // add , dzookData,b as dependents 
+        },[face])
 
     return (
         <div className = 'faceFilter'>
@@ -91,6 +175,7 @@ function FaceFilter() {
                         }
 
                         <Button
+                            onClick = {fetchToonData}
                             variant = 'outlined'>
                             Filter
                         </Button>     
@@ -99,6 +184,8 @@ function FaceFilter() {
                 </div>
 
                 <div className = 'faceFilter__contentOutput'>
+                { output && <img src = {`data:image/jpeg;base64,${output}`}/>
+                }   
 
                 </div>
 

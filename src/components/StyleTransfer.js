@@ -1,13 +1,36 @@
 import { Button } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './StyleTransfer.css';
 import { Link } from 'react-router-dom';
+import axios from '../da_axios';
+import {requests,  DA_API_KEY} from '../requests';
 
 
 function StyleTransfer() {
 
     const[content, setContent] = useState(null);
     const[style, setStyle] = useState(null);
+    const[output, setOutput] = useState(null);
+
+    const data = new FormData();
+
+    async function fetchData(){
+        const response = await axios.post(requests.fetchStyle,
+            data,
+            { headers: 
+                DA_API_KEY,
+                'Content-type': 'multipart/form-data'}
+            );
+        console.log(response);
+        setOutput(response.data.output_url)
+        // console.log(photo);
+        return response;
+    }
+
+    useEffect(() => {
+        data.append('content', content)
+        data.append('style', style)
+    }, [content, style])
 
     return (
         <div className = 'styleTransfer'>
@@ -82,6 +105,7 @@ function StyleTransfer() {
                     </div>
 
                     <Button
+                            onClick = {fetchData}
                             variant = 'outlined'>
                             Merge
                     </Button> 
@@ -89,7 +113,7 @@ function StyleTransfer() {
 
 
                 <div className = 'styleTransfer__Output'>
-
+                    {output && <img src = {output}/>}   
                 </div>
                 
             </div>

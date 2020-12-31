@@ -1,11 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './OldNew.css';
-import { Button, IconButton} from '@material-ui/core';
+import { Button, IconButton, useEventCallback} from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';   
+import axios from '../da_axios';
+import {requests,  DA_API_KEY} from '../requests';
+// import DA_API_KEY from '../requests';
+
 function OldNew() {
 
     const[photo, setPhoto] = useState(null);
+    const[output, setOutput] = useState(null);
+
+    const data =new FormData();
+
+    async function fetchData(){
+        const response = await axios.post(requests.fetchColor,
+            data,
+            { headers: 
+                DA_API_KEY,
+                'Content-type': 'multipart/form-data'}
+            );
+        console.log(response);
+        setOutput(response.data.output_url)
+        console.log(photo);
+        return response;
+    }
+
+
+    useEffect(()=>{
+        data.append('image', photo)
+    },[photo])
+
 
     return (
         <div className = 'oldNew'>
@@ -52,6 +78,9 @@ function OldNew() {
                 </div>
 
                 <Button
+                        onClick = {
+                            fetchData
+                        }
                         variant = 'outlined'>
                         Revitalise
                 </Button> 
@@ -59,7 +88,7 @@ function OldNew() {
 
 
             <div className = 'oldNew__Output'>
-
+                {output && <img src = {output}/>}
             </div>
 
             </div>

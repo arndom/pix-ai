@@ -164,3 +164,9 @@
     border-radius: 5px;
     box-shadow: 1px 1px 8px -1px #000;
 }
+
+.faceFilter__contentOutput >img{
+    height: 100%;
+    width:100%;
+    object-fit: contain;
+}
