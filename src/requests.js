@@ -12,6 +12,7 @@ const requests = {
     fetchStyle: `/fast-style-transfer`,
     fetchZombify: `/zombify?face_index=0&return_aligned=false&crop_edges=0&proceed_without_face=false`,
     fetchToonify: `/toonify?face_index=0&return_aligned=false&crop_edges=0&proceed_without_face=false`,
+    fetchToonifyPlus: `/toonifyplus?face_index=0&return_aligned=false&crop_edges=0&proceed_without_face=false`,
     fetchDzook: `/anime`    
 }
 
