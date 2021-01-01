@@ -13,6 +13,7 @@ function OldNew() {
     const[output, setOutput] = useState(null);
 
     const data =new FormData();
+    
 
     async function fetchData(){
         const response = await axios.post(requests.fetchColor,
@@ -37,34 +38,56 @@ function OldNew() {
         <div className = 'oldNew'>
             <div className = 'oldNew__content'>
 
-            <div className = 'oldNew__contentLeft'>
-                <Link to = '/'>
-                    <h2>PixAI</h2>     
-                </Link>
+                <div className = 'oldNew__contentLeft'>
+                    <Link to = '/'>
+                        <h2>PixAI</h2>     
+                    </Link>
 
-                <h3>Old to New</h3>
+                    <h3>Old to New</h3>
 
-                <div className = 'oldNew__Input'>
+                    <div className = 'oldNew__Input'>
 
-                    <div className = 'oldNew__InputStyle'>
+                        <div className = 'oldNew__InputStyle'>
 
-                        {!photo &&
-                            <h3>Old Photo</h3>
-                        } 
- 
-                        
+                            {!photo &&
+                                <h3>Old Photo</h3>
+                            } 
+    
+                            
+                            <input 
+                                accept="image/*"
+                                className='oldNew__InputStyleInput'
+                                id="icon-button-file"
+                                type="file" 
+                                onChange = {(e) => setPhoto(e.target.files[0])}
+                                />
+
+                                {photo && <img src = {photo && URL.createObjectURL(photo)}/>}
+
+
+                            {!photo &&
+                                <label htmlFor="icon-button-file">
+                                    <IconButton color="primary" aria-label="upload picture" component="span">
+                                        <PhotoCamera/>
+                                    </IconButton>
+                                </label> 
+                            }
+
+
+                        </div>
+
+                    </div>
+
+                    <div className = 'oldNew__run'>
                         <input 
                             accept="image/*"
                             className='oldNew__InputStyleInput'
                             id="icon-button-file"
                             type="file" 
                             onChange = {(e) => setPhoto(e.target.files[0])}
-                            />
-
-                            {photo && <img src = {photo && URL.createObjectURL(photo)}/>}
-
-
-                        {!photo &&
+                        />
+                           
+                        {photo &&
                             <label htmlFor="icon-button-file">
                                 <IconButton color="primary" aria-label="upload picture" component="span">
                                     <PhotoCamera/>
@@ -72,23 +95,26 @@ function OldNew() {
                             </label> 
                         }
 
-
+                        <Button
+                            onClick = {
+                                fetchData
+                            }
+                            variant = 'outlined'>
+                            Revitalise
+                        </Button> 
                     </div>
-
+                    
+                    {/* <Button
+                            onClick = {
+                                fetchData
+                            }
+                            variant = 'outlined'>
+                            Revitalise
+                    </Button>  */}
                 </div>
 
-                <Button
-                        onClick = {
-                            fetchData
-                        }
-                        variant = 'outlined'>
-                        Revitalise
-                </Button> 
-            </div>
-
-
-            <div className = 'oldNew__Output'>
-                {output && <img src = {output}/>}
+                <div className = 'oldNew__Output'>
+                    {output && <img src = {output}/>}
             </div>
 
             </div>

@@ -1,9 +1,11 @@
-import { Button } from '@material-ui/core';
+import { Button, IconButton } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import './StyleTransfer.css';
 import { Link } from 'react-router-dom';
 import axios from '../da_axios';
 import {requests,  DA_API_KEY} from '../requests';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';   
+
 
 
 function StyleTransfer() {
@@ -103,12 +105,53 @@ function StyleTransfer() {
                         </div>
 
                     </div>
+                    
+                    <div className = 'styleTransfer__contentLeftRun'>
+                        <input 
+                            accept="image/*"
+                            className='oldNew__InputStyleInput'
+                            id="icon-button-file1"
+                            type="file" 
+                            onChange = {(e) => setContent(e.target.files[0])}
+                        />
 
-                    <Button
+                        
+                        {content &&
+                            <label htmlFor="icon-button-file1">
+                                <IconButton color="primary" aria-label="upload picture" component="span">
+                                     <PhotoCamera/>
+                                </IconButton>
+                            </label> 
+                        }
+
+                        <Button
                             onClick = {fetchData}
                             variant = 'outlined'>
                             Merge
-                    </Button> 
+                        </Button> 
+
+                        <input 
+                            accept="image/*"
+                            className='oldNew__InputStyleInput'
+                            id="icon-button-file2"
+                            type="file" 
+                            onChange = {(e) => setStyle(e.target.files[0])}
+                        />
+                           
+                        {style &&
+                            <label htmlFor="icon-button-file2">
+                                <IconButton color="primary" aria-label="upload picture" component="span">
+                                    <PhotoCamera/>
+                                </IconButton>
+                            </label> 
+                        }
+                    </div>
+
+                    {/* <Button
+                            onClick = {fetchData}
+                            variant = 'outlined'>
+                            Merge
+                    </Button>  */}
                 </div>
 
 

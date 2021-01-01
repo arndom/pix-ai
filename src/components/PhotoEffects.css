@@ -1,4 +1,5 @@
-.photoEffects{
+@media only screen and (min-width: 962px){
+ .photoEffects{
     display: flex;
     justify-content: space-around;
     flex-direction: column;
@@ -7,4 +8,18 @@
     padding-right: 20vw;
     background: #F1F1F1;
 }
+   
+}
 
+@media only screen and (max-width: 962px){
+    .photoEffects{
+       display: flex;
+       justify-content: space-around;
+       flex-direction: column;
+       align-items: center;
+       padding-left: 5vw; 
+       padding-right: 5vw;
+       background: #F1F1F1;
+   }
+      
+   }
