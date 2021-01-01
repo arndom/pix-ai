@@ -190,7 +190,7 @@
     }
     
     .styleTransfer__Output{
-        width: 55vw;
+        width: 65vw;
         height: 85vh;
     
         border-style: dotted;
@@ -275,9 +275,6 @@
         flex-direction: column;
         justify-content: space-between;
         margin:20px;
-    
-        /* padding-top: 20vh; */
-    
     }
     
     .styleTransfer__InputContent{
@@ -399,8 +396,6 @@
         border-radius: 5px;
     
         margin:20px;
-    
-        /* box-shadow: 1px 1px 8px -1px #000; */
     }
     
     .styleTransfer__Output > img{
