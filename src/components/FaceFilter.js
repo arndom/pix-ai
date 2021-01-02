@@ -11,6 +11,7 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';      
 
 function FaceFilter() {
+        
 
     const[face, setFace] = useState(null);
     // const[filter,  setFilter] = useState(requests.fetchZombify);
@@ -27,6 +28,7 @@ function FaceFilter() {
 
     const toonData = new FormData();
     var  dzookData = null;
+
 
     async function fetchZombieData(){
         console.log(TOON_API_KEY)
@@ -183,6 +185,7 @@ function FaceFilter() {
                                     id="icon-button-file"
                                     type="file"
                                     onChange = {(e) =>
+
                                         setFace(e.target.files[0])
                                     }
                                 />
@@ -245,8 +248,10 @@ function FaceFilter() {
                                 id="icon-button-file"
                                 type="file"
                                 onChange = {(e) =>{
+                                    setOutput(null);
+
                                     setFace(e.target.files[0])
-                                    setOutput(null)}
+                                }
                                 }
                             />
 

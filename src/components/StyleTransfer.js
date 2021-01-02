@@ -19,9 +19,11 @@ function StyleTransfer() {
     async function fetchData(){
         const response = await axios.post(requests.fetchStyle,
             data,
-            { headers: 
-                DA_API_KEY,
+            { headers:{
+                "api-key": DA_API_KEY,
                 'Content-type': 'multipart/form-data'}
+            } 
+        
             );
         console.log(response);
         setOutput(response.data.output_url)
@@ -125,7 +127,12 @@ function StyleTransfer() {
                         }
 
                         <Button
-                            onClick = {fetchData}
+                            onClick = {()=>{
+                                if(content){
+                                    fetchData();
+                                }
+                            }
+                                }
                             variant = 'outlined'>
                             Merge
                         </Button> 

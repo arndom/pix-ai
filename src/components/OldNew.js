@@ -19,9 +19,10 @@ function OldNew() {
     async function fetchData(){
         const response = await axios.post(requests.fetchColor,
             data,
-            { headers: 
-                DA_API_KEY,
+            { headers:{
+                "api-key": DA_API_KEY,
                 'Content-type': 'multipart/form-data'}
+            } 
             );
         console.log(response);
         setOutput(response.data.output_url)
