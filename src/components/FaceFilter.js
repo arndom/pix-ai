@@ -11,7 +11,6 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';      
 
 function FaceFilter() {
-        
 
     const[face, setFace] = useState(null);
     // const[filter,  setFilter] = useState(requests.fetchZombify);
@@ -31,7 +30,7 @@ function FaceFilter() {
 
 
     async function fetchZombieData(){
-        console.log(TOON_API_KEY)
+        // console.log(TOON_API_KEY)
         setOutput(null);
         const response = await toon_axios.post(requests.fetchZombify,
             toonData,
@@ -41,14 +40,14 @@ function FaceFilter() {
                 'X-RapidAPI-Host': 'toonify.p.rapidapi.com',
                 'Accept': 'image/jpeg, application/json, text/plain, */*'
             }
-
             },
+
             {timeout: 0},
             {processData: false},
             {mimeType: "multipart/form-data"},
             {contentType: false}
         );
-        console.log(response);
+        // console.log(response);
         
         // console.log(filter);
 
@@ -58,7 +57,7 @@ function FaceFilter() {
     }
 
     async function fetchToonData(){
-        console.log(TOON_API_KEY)
+        // console.log(TOON_API_KEY)
 
         setOutput(null);
         const response = await toon_axios.post(requests.fetchToonify,
@@ -76,7 +75,7 @@ function FaceFilter() {
             {mimeType: "multipart/form-data"},
             {contentType: false}
         );
-        console.log(response);
+        // console.log(response);
         // console.log(filter);
 
         setOutput(response.data.b64_encoded_output)
@@ -85,7 +84,7 @@ function FaceFilter() {
     }
 
     async function fetchToonPlusData(){
-        console.log(TOON_API_KEY)
+        // console.log(TOON_API_KEY)
 
         setOutput(null);
         const response = await toon_axios.post(requests.fetchToonifyPlus,
@@ -103,7 +102,7 @@ function FaceFilter() {
             {mimeType: "multipart/form-data"},
             {contentType: false}
         );
-        console.log(response);
+        // console.log(response);
         // console.log(filter);
 
         setOutput(response.data.b64_encoded_output)
@@ -158,7 +157,7 @@ function FaceFilter() {
         //     }
 
         // add , dzookData,base64 as dependents 
-        },[face])
+        },[toonData, face])
 
     return (
         <div className = 'faceFilter'>
@@ -185,7 +184,7 @@ function FaceFilter() {
                                     id="icon-button-file"
                                     type="file"
                                     onChange = {(e) =>
-
+                                        
                                         setFace(e.target.files[0])
                                     }
                                 />
@@ -248,8 +247,6 @@ function FaceFilter() {
                                 id="icon-button-file"
                                 type="file"
                                 onChange = {(e) =>{
-                                    setOutput(null);
-
                                     setFace(e.target.files[0])
                                 }
                                 }

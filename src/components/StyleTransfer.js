@@ -25,7 +25,7 @@ function StyleTransfer() {
             } 
         
             );
-        console.log(response);
+        // console.log(response);
         setOutput(response.data.output_url)
         // console.log(photo);
         return response;
@@ -34,7 +34,7 @@ function StyleTransfer() {
     useEffect(() => {
         data.append('content', content)
         data.append('style', style)
-    }, [content, style])
+    }, [data, content, style])
 
     return (
         <div className = 'styleTransfer'>

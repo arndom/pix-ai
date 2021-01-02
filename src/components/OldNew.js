@@ -15,7 +15,6 @@ function OldNew() {
 
     const data =new FormData();
     
-
     async function fetchData(){
         const response = await axios.post(requests.fetchColor,
             data,
@@ -24,16 +23,15 @@ function OldNew() {
                 'Content-type': 'multipart/form-data'}
             } 
             );
-        console.log(response);
+        // console.log(response);
         setOutput(response.data.output_url)
-        console.log(photo);
+        // console.log(photo);
         return response;
     }
 
-
     useEffect(()=>{
         data.append('image', photo)
-    },[photo])
+    },[data, photo])
 
 
     return (
