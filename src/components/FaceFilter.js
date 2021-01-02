@@ -244,8 +244,9 @@ function FaceFilter() {
                                 className='faceFilter__contentInputUploadButtonInput'
                                 id="icon-button-file"
                                 type="file"
-                                onChange = {(e) =>
+                                onChange = {(e) =>{
                                     setFace(e.target.files[0])
+                                    setOutput(null)}
                                 }
                             />
 
