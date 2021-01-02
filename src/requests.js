@@ -1,10 +1,10 @@
-import {D_API_KEY, T_API_KEY, DZ_API_KEY} from './key_config';
+// import {CREDENTIALS} from './key_config';
 
-const DA_API_KEY = D_API_KEY;
+const DA_API_KEY = process.env.REACT_APP_D_API_KEY;
 
-const TOON_API_KEY = T_API_KEY;
+const TOON_API_KEY = process.env.REACT_APP_T_API_KEY;
 
-const DZOOK_API_KEY = DZ_API_KEY;
+const DZOOK_API_KEY = process.env.REACT_APP_DZ_API_KEY;
 
 
 const requests = {
