@@ -29,7 +29,7 @@ function FaceFilter() {
     var  dzookData = null;
 
     async function fetchZombieData(){
-        // console.log(TOON_API_KEY)
+        console.log(TOON_API_KEY)
         setOutput(null);
         const response = await toon_axios.post(requests.fetchZombify,
             toonData,
@@ -56,6 +56,8 @@ function FaceFilter() {
     }
 
     async function fetchToonData(){
+        console.log(TOON_API_KEY)
+
         setOutput(null);
         const response = await toon_axios.post(requests.fetchToonify,
             toonData,
@@ -65,6 +67,7 @@ function FaceFilter() {
                 'X-RapidAPI-Host': 'toonify.p.rapidapi.com',
                 'Accept': 'image/jpeg, application/json, text/plain, */*'
             }
+
             },
             {timeout: 0},
             {processData: false},
@@ -80,15 +83,18 @@ function FaceFilter() {
     }
 
     async function fetchToonPlusData(){
+        console.log(TOON_API_KEY)
+
         setOutput(null);
         const response = await toon_axios.post(requests.fetchToonifyPlus,
             toonData,
-            {headers: {
+            { headers: {
                 'X-RapidAPI-Key':TOON_API_KEY,
                 'Content-type': 'multipart/form-data',
                 'X-RapidAPI-Host': 'toonify.p.rapidapi.com',
                 'Accept': 'image/jpeg, application/json, text/plain, */*'
             }
+
             },
             {timeout: 0},
             {processData: false},
