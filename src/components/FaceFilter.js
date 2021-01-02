@@ -46,7 +46,7 @@ function FaceFilter() {
             {mimeType: "multipart/form-data"},
             {contentType: false}
         );
-        // console.log(response);
+        console.log(response);
         
         // console.log(filter);
 
@@ -71,7 +71,7 @@ function FaceFilter() {
             {mimeType: "multipart/form-data"},
             {contentType: false}
         );
-        // console.log(response);
+        console.log(response);
         // console.log(filter);
 
         setOutput(response.data.b64_encoded_output)
@@ -95,7 +95,7 @@ function FaceFilter() {
             {mimeType: "multipart/form-data"},
             {contentType: false}
         );
-        // console.log(response);
+        console.log(response);
         // console.log(filter);
 
         setOutput(response.data.b64_encoded_output)
