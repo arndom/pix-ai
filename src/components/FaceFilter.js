@@ -29,7 +29,7 @@ function FaceFilter() {
     var  dzookData = null;
 
     async function fetchZombieData(){
-        console.log(TOON_API_KEY)
+        // console.log(TOON_API_KEY)
         setOutput(null);
         const response = await toon_axios.post(requests.fetchZombify,
             toonData,
@@ -46,7 +46,7 @@ function FaceFilter() {
             {mimeType: "multipart/form-data"},
             {contentType: false}
         );
-        console.log(response);
+        // console.log(response);
         
         // console.log(filter);
 
@@ -59,18 +59,19 @@ function FaceFilter() {
         setOutput(null);
         const response = await toon_axios.post(requests.fetchToonify,
             toonData,
-            { headers: 
-                TOON_API_KEY,
+            { headers: {
+                'X-RapidAPI-Key':TOON_API_KEY,
                 'Content-type': 'multipart/form-data',
                 'X-RapidAPI-Host': 'toonify.p.rapidapi.com',
-                'accept': 'image/jpeg'
+                'Accept': 'image/jpeg, application/json, text/plain, */*'
+            }
             },
             {timeout: 0},
             {processData: false},
             {mimeType: "multipart/form-data"},
             {contentType: false}
         );
-        console.log(response);
+        // console.log(response);
         // console.log(filter);
 
         setOutput(response.data.b64_encoded_output)
@@ -82,18 +83,19 @@ function FaceFilter() {
         setOutput(null);
         const response = await toon_axios.post(requests.fetchToonifyPlus,
             toonData,
-            { headers: 
-                TOON_API_KEY,
+            {headers: {
+                'X-RapidAPI-Key':TOON_API_KEY,
                 'Content-type': 'multipart/form-data',
                 'X-RapidAPI-Host': 'toonify.p.rapidapi.com',
-                'accept': 'image/jpeg'
+                'Accept': 'image/jpeg, application/json, text/plain, */*'
+            }
             },
             {timeout: 0},
             {processData: false},
             {mimeType: "multipart/form-data"},
             {contentType: false}
         );
-        console.log(response);
+        // console.log(response);
         // console.log(filter);
 
         setOutput(response.data.b64_encoded_output)
