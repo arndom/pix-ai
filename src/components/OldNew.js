@@ -7,15 +7,20 @@ import axios from '../da_axios';
 import {requests,  DA_API_KEY} from '../requests';
 // import DA_API_KEY from '../requests';
 import LoadingOverlay from "react-loading-overlay";
+import GetAppIcon from '@material-ui/icons/GetApp';
 
 function OldNew() {
 
     const[photo, setPhoto] = useState(null);
     const[output, setOutput] = useState(null);
 
+    const[outputOverlay, setOutputOverlay] = useState(false);
+
+
     const data =new FormData();
     
     async function fetchData(){
+        setOutput(null);
         const response = await axios.post(requests.fetchColor,
             data,
             { headers:{
@@ -31,7 +36,10 @@ function OldNew() {
 
     useEffect(()=>{
         data.append('image', photo)
-    },[data, photo])
+        if(output){
+            setOutputOverlay(false);
+        }
+    },[data, photo, output])
 
 
     return (
@@ -96,26 +104,27 @@ function OldNew() {
                         }
 
                         <Button
-                            onClick = {
-                                fetchData
+                            onClick = {()=>{
+                                fetchData()
+                                setOutputOverlay(true)
+                            }
+                                
                             }
                             variant = 'outlined'>
                             Revitalise
                         </Button> 
                     </div>
-                    
-                    {/* <Button
-                            onClick = {
-                                fetchData
-                            }
-                            variant = 'outlined'>
-                            Revitalise
-                    </Button>  */}
-                </div>
 
+                </div>
+                <LoadingOverlay
+                    active = {outputOverlay}
+                    spinner
+                    text = 'Loading creation...'
+                >
                 <div className = 'oldNew__Output'>
                     {output && <img src = {output}/>}
-            </div>
+                </div>
+                </LoadingOverlay>
 
             </div>
 

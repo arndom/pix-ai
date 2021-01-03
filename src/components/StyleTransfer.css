@@ -3,7 +3,7 @@
         background-color: #F1F1F1;
         padding-top: 5vh;
         padding-bottom: 5vh;
-        height: 90vh;
+        /* height: 90vh; */
     }
     
     .styleTransfer__content{
@@ -14,6 +14,8 @@
     
         margin-right:5vw;
         margin-left: 5vw;
+        padding: 20px;
+
         border-style: none;
         border-width: 1px;
         border-color: #303030;
@@ -190,7 +192,7 @@
     }
     
     .styleTransfer__Output{
-        width: 65vw;
+        width: 40vw;
         height: 85vh;
     
         border-style: dotted;
@@ -199,7 +201,7 @@
         background-color: none;
         border-radius: 5px;
     
-        margin:20px;
+        /* margin:20px; */
     
         /* box-shadow: 1px 1px 8px -1px #000; */
     }
@@ -227,6 +229,10 @@
     
         margin-right:5vw;
         margin-left: 5vw;
+        padding: 20px;
+        /* margin-top: 10vh; */
+        /* margin-bottom: 10vh; */
+
         border-style: none;
         border-width: 1px;
         border-color: #303030;
@@ -383,11 +389,23 @@
     .styleTransfer__contentLeftRun > button:hover{
         background-color: white;
         color: #aa00ff;
+    }   
+
+    .css-df17o1{
+        position: relative;
+        background-color: #FFF;
+    }
+
+    .css-50etie svg{
+       background-color: lightgray;
+       opacity: 0.5;
     }
     
     .styleTransfer__Output{
-        /* width: 55vw;
-        height: 85vh; */
+        /* width: 25vw;
+        height: 20vh; */
+
+        /* color: black; */
     
         border-style: dotted;
         border-width: 3px;
@@ -395,7 +413,7 @@
         background-color: none;
         border-radius: 5px;
     
-        margin:20px;
+        /* margin:20px; */
     }
     
     .styleTransfer__Output > img{

@@ -6,9 +6,10 @@ import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import { Link } from 'react-router-dom';
 import {requests, TOON_API_KEY, DZOOK_API_KEY} from '../requests';
 import toon_axios from '../toon_axios';
-import dzook_axios from '../dzook_axios'; 
-import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css';      
+import dzook_axios from '../dzook_axios';
+import 'react-dropdown/style.css';    
+import LoadingOverlay from 'react-loading-overlay';
+import GetAppIcon from '@material-ui/icons/GetApp';
 
 function FaceFilter() {
 
@@ -16,6 +17,8 @@ function FaceFilter() {
     // const[filter,  setFilter] = useState(requests.fetchZombify);
     const[output, setOutput] = useState(null);
     const[base64, setBase64] = useState(null);
+
+    const[outputOverlay, setOutputOverlay] = useState(false);
 
     const filterOptions = [
         {value: requests.fetchZombify, label: 'Zombify'},
@@ -157,7 +160,12 @@ function FaceFilter() {
         //     }
 
         // add , dzookData,base64 as dependents 
-        },[toonData, face])
+
+        if(output){
+            setOutputOverlay(false);
+        }
+
+        },[toonData, face, output])
 
     return (
         <div className = 'faceFilter'>
@@ -265,35 +273,50 @@ function FaceFilter() {
                             }
 
                             <Button
-                                onClick = {fetchZombieData}
+                                onClick = {()=>{
+                                    fetchZombieData();
+                                    setOutputOverlay(true)
+                                }}
                                 variant = 'outlined'>
                                 Zombify
                             </Button>
 
                             <Button
-                                onClick = {fetchToonData}
+                                onClick = {()=>{
+                                    fetchToonData()
+                                    setOutputOverlay(true)
+
+                                }}
                                 variant = 'outlined'>
                                 Toonify
                             </Button>
 
                             <Button
-                                onClick = {fetchToonPlusData}
+                                onClick = {()=>{
+                                    fetchToonPlusData()
+                                    setOutputOverlay(true)
+                                }}
                                 variant = 'outlined'>
                                 Toonify2
                             </Button>
                             
 
                         </div>
-
+                        
+                        {output && <GetAppIcon/>}
                     </div>
 
                 </div>
+                <LoadingOverlay
+                    active = {outputOverlay}
+                    spinner
+                    text = 'Loading creation...'
+                >
 
                 <div className = 'faceFilter__contentOutput'>
-                    { output && <img src = {`data:image/jpeg;base64,${output}`}/>
-                }   
-
+                    { output && <img src = {`data:image/jpeg;base64,${output}`}/>}   
                 </div>
+                </LoadingOverlay>
 
             </div>
             

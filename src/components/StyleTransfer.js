@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import axios from '../da_axios';
 import {requests,  DA_API_KEY} from '../requests';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';   
+import LoadingOverlay from 'react-loading-overlay';
+import GetAppIcon from '@material-ui/icons/GetApp';
 
 
 
@@ -14,9 +16,13 @@ function StyleTransfer() {
     const[style, setStyle] = useState(null);
     const[output, setOutput] = useState(null);
 
+    const[outputOverlay, setOutputOverlay] = useState(false);
+
+
     const data = new FormData();
 
     async function fetchData(){
+        setOutput(null);
         const response = await axios.post(requests.fetchStyle,
             data,
             { headers:{
@@ -34,7 +40,10 @@ function StyleTransfer() {
     useEffect(() => {
         data.append('content', content)
         data.append('style', style)
-    }, [data, content, style])
+        if(output){
+            setOutputOverlay(false);
+        }
+    }, [data, content, style, output])
 
     return (
         <div className = 'styleTransfer'>
@@ -128,9 +137,8 @@ function StyleTransfer() {
 
                         <Button
                             onClick = {()=>{
-                                if(content){
-                                    fetchData();
-                                }
+                                fetchData()
+                                setOutputOverlay(true)
                             }
                                 }
                             variant = 'outlined'>
@@ -154,17 +162,16 @@ function StyleTransfer() {
                         }
                     </div>
 
-                    {/* <Button
-                            onClick = {fetchData}
-                            variant = 'outlined'>
-                            Merge
-                    </Button>  */}
                 </div>
-
-
+                <LoadingOverlay
+                    active = {outputOverlay}
+                    spinner
+                    text = 'Loading creation...'
+                >
                 <div className = 'styleTransfer__Output'>
                     {output && <img src = {output}/>}   
                 </div>
+                </LoadingOverlay>
                 
             </div>
 
