@@ -15,6 +15,7 @@ function OldNew() {
     const[output, setOutput] = useState(null);
 
     const[outputOverlay, setOutputOverlay] = useState(false);
+    const[disable, setDisable]= useState(true);
 
 
     const data =new FormData();
@@ -38,6 +39,13 @@ function OldNew() {
         data.append('image', photo)
         if(output){
             setOutputOverlay(false);
+        }
+        if(photo){
+            setDisable(false);
+        }
+
+        if(!photo){
+            setDisable(true);
         }
     },[data, photo, output])
 
@@ -104,6 +112,8 @@ function OldNew() {
                         }
 
                         <Button
+                            disabled = {disable}
+
                             onClick = {()=>{
                                 fetchData()
                                 setOutputOverlay(true)

@@ -121,7 +121,7 @@
     .faceFilter__contentInputInfo > p >.MuiSvgIcon-root{
         margin-right: 10px !important;
         font-size: 12px !important;
-        color: #ff7779;
+        color: #ff7779 !important;
     }
     
     
@@ -233,6 +233,7 @@
         margin-top:5vh;
         margin-bottom: 9vh;
         padding: 25px 5px;
+        color: #ff7779;
         /* width: 18vw;
         height: 40vh; */
         /* margin-left:15vw;
@@ -295,7 +296,7 @@
     .faceFilter__contentInputInfo > p >.MuiSvgIcon-root{
         margin-right: 10px !important;
         font-size: 12px !important;
-        color: #ff7779;
+        color: #ff7779 !important;
     }
     
     

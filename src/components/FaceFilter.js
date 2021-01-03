@@ -19,6 +19,7 @@ function FaceFilter() {
     const[base64, setBase64] = useState(null);
 
     const[outputOverlay, setOutputOverlay] = useState(false);
+    const[disable, setDisable]= useState(true);
 
     const filterOptions = [
         {value: requests.fetchZombify, label: 'Zombify'},
@@ -165,6 +166,14 @@ function FaceFilter() {
             setOutputOverlay(false);
         }
 
+        if(face){
+            setDisable(false);
+        }
+
+        if(!face){
+            setDisable(true);
+        }
+
         },[toonData, face, output])
 
     return (
@@ -273,6 +282,8 @@ function FaceFilter() {
                             }
 
                             <Button
+                                disabled = {disable}
+
                                 onClick = {()=>{
                                     fetchZombieData();
                                     setOutputOverlay(true)
@@ -282,6 +293,8 @@ function FaceFilter() {
                             </Button>
 
                             <Button
+                                disabled = {disable}
+
                                 onClick = {()=>{
                                     fetchToonData()
                                     setOutputOverlay(true)
@@ -292,6 +305,8 @@ function FaceFilter() {
                             </Button>
 
                             <Button
+                                disabled = {disable}
+
                                 onClick = {()=>{
                                     fetchToonPlusData()
                                     setOutputOverlay(true)

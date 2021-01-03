@@ -17,6 +17,7 @@ function StyleTransfer() {
     const[output, setOutput] = useState(null);
 
     const[outputOverlay, setOutputOverlay] = useState(false);
+    const[disable, setDisable]= useState(true);
 
 
     const data = new FormData();
@@ -42,6 +43,13 @@ function StyleTransfer() {
         data.append('style', style)
         if(output){
             setOutputOverlay(false);
+        }
+        if(content&&style){
+            setDisable(false);
+        }
+
+        if(!content&&!style){
+            setDisable(true);
         }
     }, [data, content, style, output])
 
@@ -136,6 +144,8 @@ function StyleTransfer() {
                         }
 
                         <Button
+                            disabled = {disable}
+
                             onClick = {()=>{
                                 fetchData()
                                 setOutputOverlay(true)
