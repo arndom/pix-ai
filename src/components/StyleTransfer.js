@@ -38,6 +38,25 @@ function StyleTransfer() {
         return response;
     }
 
+    function downloadImage(src) {
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        img.src = src;
+        img.onload = () => {
+            // create Canvas
+            const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d");
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0);
+            // create <a> tag
+            const a = document.createElement("a");
+            a.download = "download.jpg";
+            a.href = canvas.toDataURL("image/png");
+            a.click();
+        };
+    }
+
     useEffect(() => {
         data.append('content', content)
         data.append('style', style)
@@ -70,7 +89,7 @@ function StyleTransfer() {
                         <div className = 'styleTransfer__InputContent'>
 
                             {!content &&
-                                <h3>Content</h3>
+                                <h3>Content (Photo)</h3>
                             }
                             
                             <input
@@ -95,10 +114,12 @@ function StyleTransfer() {
 
                         </div>
 
+
+
                         <div className = 'styleTransfer__InputStyle'>
                             
                             {!style && 
-                                 <h3>Style</h3>                           
+                                 <h3>Style (Art)</h3>                           
                             }
 
                             <input
@@ -124,6 +145,12 @@ function StyleTransfer() {
                         </div>
 
                     </div>
+
+                    <IconButton onClick ={()=>{
+                            downloadImage(output)
+                        }}>
+                            {output && <GetAppIcon/>}
+                        </IconButton>
                     
                     <div className = 'styleTransfer__contentLeftRun'>
                         <input 
@@ -170,7 +197,11 @@ function StyleTransfer() {
                                 </IconButton>
                             </label> 
                         }
+
+                        
                     </div>
+
+                    
 
                 </div>
                 <LoadingOverlay

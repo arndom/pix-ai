@@ -63,7 +63,7 @@
         padding: 30px 10px;
         max-width: 30vw;
         max-height: 40vh;
-        color: #ff7779;
+        /* color: #ff7779; */
         
     
         border-style: none;
@@ -233,7 +233,7 @@
         margin-top:5vh;
         margin-bottom: 9vh;
         padding: 25px 5px;
-        color: #ff7779;
+        /* color: #ff7779; */
         /* width: 18vw;
         height: 40vh; */
         /* margin-left:15vw;
