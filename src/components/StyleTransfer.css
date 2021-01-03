@@ -391,7 +391,7 @@
         color: #aa00ff;
     }   
 
-    .css-df17o1{
+    /* .css-df17o1{
         position: relative;
         background-color: #FFF;
     }
@@ -399,11 +399,11 @@
     .css-50etie svg{
        background-color: lightgray;
        opacity: 0.5;
-    }
+    } */
     
     .styleTransfer__Output{
-        /* width: 25vw;
-        height: 20vh; */
+        min-width: 25vw;
+        min-height: 20vh;
 
         /* color: black; */
     

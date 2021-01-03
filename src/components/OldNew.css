@@ -15,7 +15,7 @@
         margin-right:5vw;
         margin-left: 5vw;
         padding: 20px;
-            
+
         border-style: none;
         border-width: 1px;
         border-color: #303030;
@@ -328,8 +328,8 @@
     }
     
     .oldNew__Output{
-        /* width: 55vw;
-        height: 85vh; */
+        min-width: 25vw;
+        min-height: 20vh;
     
         border-style: dotted;
         border-width: 3px;
