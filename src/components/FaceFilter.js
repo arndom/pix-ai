@@ -115,21 +115,20 @@ function FaceFilter() {
     }
 
     async function fetchDzookData(){
+        setOutput(null);
         const response = await dzook_axios.post(requests.fetchDzook,
             dzookData,
-            { headers: 
-                DZOOK_API_KEY,
+            { headers: {
+                'x-rapidapi-key':  DZOOK_API_KEY,
                 "content-type": "application/json",
                 "x-rapidapi-host": "dzook4.p.rapidapi.com",
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Methods': 'GET, PUT, POST,DELETE, PATCH,OPTIONS',
+            }   
             },
             {timeout: 0},
         );
-        console.log(response);
-
-        // console.log(base64);
-        console.log(dzookData);
+        setOutput(response.data.b64_encoded_output)
         return response;
     }
 
@@ -137,8 +136,8 @@ function FaceFilter() {
         var file = element;
         var reader = new FileReader();
         reader.onloadend = function() {
-        //   console.log(reader.result)
-            setBase64(reader.result)
+
+            setBase64(reader.result.split(',').pop())
         }
         reader.readAsDataURL(file);
         // return reader.readAsDataURL(file);
@@ -164,22 +163,16 @@ function FaceFilter() {
     }
 
     useEffect(()=>{
+
         toonData.append('image', face);
         
-        // if(face){
-        //     encodeImageFileAsURL(face);
-        //     dzookData =  JSON.stringify({
-        //         'image': base64,
-        //         "return_aligned":false
-        //     });
-
-
-        //     console.log(dzookData);
-
-
-        //     }
-
-        // add , dzookData,base64 as dependents 
+        if(face){
+            encodeImageFileAsURL(face);
+            dzookData =  JSON.stringify({
+                'image': base64,
+                "return_aligned":false
+            });
+            }
 
         if(output){
             setOutputOverlay(false);
@@ -193,7 +186,7 @@ function FaceFilter() {
             setDisable(true);
         }
 
-        },[toonData, face, output])
+        },[toonData, face, output, dzookData, base64])
 
     return (
         <div className = 'faceFilter'>
@@ -323,7 +316,7 @@ function FaceFilter() {
                                 Toonify
                             </Button>
 
-                            <Button
+                            {/* <Button
                                 disabled = {disable}
 
                                 onClick = {()=>{
@@ -332,6 +325,17 @@ function FaceFilter() {
                                 }}
                                 variant = 'outlined'>
                                 Toonify2
+                            </Button> */}
+
+                            <Button
+                                disabled = {disable}
+
+                                onClick = {()=>{
+                                    fetchDzookData()
+                                    setOutputOverlay(true)
+                                }}
+                                variant = 'outlined'>
+                                Illustrate
                             </Button>
                             
 

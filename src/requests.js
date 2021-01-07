@@ -13,7 +13,7 @@ const requests = {
     fetchZombify: `/zombify?face_index=0&return_aligned=false&crop_edges=0&proceed_without_face=false`,
     fetchToonify: `/toonify?face_index=0&return_aligned=false&crop_edges=0&proceed_without_face=false`,
     fetchToonifyPlus: `/toonifyplus?face_index=0&return_aligned=false&crop_edges=0&proceed_without_face=false`,
-    fetchDzook: `/anime`    
+    fetchDzook: `/glam`    
 }
 
 export {requests, DA_API_KEY, TOON_API_KEY, DZOOK_API_KEY}; 
